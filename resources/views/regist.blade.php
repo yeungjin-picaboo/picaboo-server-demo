@@ -16,21 +16,14 @@
         @endif
     </ul>
     <!-- <form name='registform' action="/register" method='post' id='registform'> -->
-    <form name='registform' action="/uregist" method='post' id='registform'>
+    <form name='registform' action="/regist" method='post' id='registform'>
         {{ csrf_field() }} 
         <!-- @csrf -->
         <dl>
-            <dt>이름:</dt>
+            <dt>아이디:</dt>
             <dd>
-                <input type="text" name='name' size='30'>
-                <span>{{$errors->first('name')}}</span>
-            </dd>
-        </dl>
-        <dl>
-            <dt>메일주소:</dt>
-            <dd>
-                <input type="text" name='email' size='30'>
-                <span>{{$errors->first('email')}}</span>
+                <input type="id" name='user_id' size='30'>
+                <span>{{$errors->first('user_id')}}</span>
             </dd>
         </dl>
         <dl>
@@ -40,14 +33,44 @@
                 <span>{{$errors->first('password')}}</span>
             </dd>
         </dl>
-        <dl>
+        {{-- <dl>
             <dt>비밀번호(확인):</dt>
             <dd>
             <input type="password" name='password_confirmation' size='30'>
                 <span>{{$errors->first('password_confirmation')}}</span>
             </dd>
+        </dl> --}}
+        <dl>
+            <dt>이름:</dt>
+            <dd>
+                <input type="text" name='name' size='30'>
+                <span>{{$errors->first('name')}}</span>
+            </dd>
         </dl>
+        <dl>
+            <dt>닉네임:</dt>
+            <dd>
+                <input type="text" name='nickname' size='30'>
+                <span>{{$errors->first('nickname')}}</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>이메일:</dt>
+            <dd>
+                <input type="text" name='user_email' size='30'>
+                <span>{{$errors->first('user_email')}}</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>핸드폰번호:</dt>
+            <dd>
+                <input type="text" name='user_phnum' size='30'>
+                <span>{{$errors->first('user_phnum')}}</span>
+            </dd>
+        </dl>
+        
         <button type='submit' name='action' vaule='send'>보내기</button>
+        
     </form>
 </body>
 </html>
