@@ -3,11 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class User extends Model
+class User extends Authenticatable
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
     public function answer(){ //TODO answer 테이블과 1:N관계
         return $this -> hasMany(Answer::class);
     }
@@ -38,8 +41,10 @@ class User extends Model
         'password',
         'name',
         'user_nickname',
+        'user_phnum',
+        'user_email',
     ];
-
+    
     protected $guarded = [ // 대량할당 불가능, 임의 수정 불가능
         'permission',
         'created_at',
