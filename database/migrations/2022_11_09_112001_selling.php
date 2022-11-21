@@ -16,16 +16,13 @@ return new class extends Migration
         Schema::create('sellings', function (Blueprint $table) {
             $table->id('selling_num');;
             $table->string('title','100');
-            $table->string('user_id','20'); 
-            $table->string('user_email');
+            $table->string('email');
             $table->string('user_nickname');
             $table->string('content','1000');
-            $table->integer('views');
+            $table->integer('views')->nullable();
             $table->timestamps();
 
-            
-            $table->foreign('user_id')->references('user_id')->on('users'); 
-            $table->foreign('user_email')->references('user_email')->on('users');;
+            $table->foreign('email')->references('email')->on('users');;
             $table->foreign('user_nickname')->references('user_nickname')->on('users');;
         });
     }

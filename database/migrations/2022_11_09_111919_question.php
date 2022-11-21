@@ -15,11 +15,15 @@ return new class extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id('question_num');
-            $table->foreignId('user_user_id');
-            $table->foreignId('user_user_email');
+            $table->string('email');
+            $table->string('user_nickname');
             $table->integer('views');
             $table->string('question_title','100');
             $table->string('question_content','1000');
+            $table->timestamps();
+
+            $table->foreign('email')->references('email')->on('users');
+            $table->foreign('user_nickname')->references('user_nickname')->on('users');
         });
     }
 

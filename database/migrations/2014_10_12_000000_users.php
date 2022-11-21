@@ -14,17 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->string('user_id','100')->primary();
-            $table->string('password','100');
-            $table->string('name','10');
+            $table->id();
+            $table->string('email','100')->unique();
+            $table->string('password','100');  // 수정 필요 ex) 최대 몇자 특수문자 등(vailidate에서 수정)
+            $table->string('name');
             $table->string('user_nickname','100')->unique();
-            $table->string('user_email','100')->unique();
             $table->integer('user_phnum')->unique();
-            $table->boolean('permission')->default(1);
-            $table->timestamps(); // timestamp 메서드와 timestamps 메서드는 다름
-                                  // timestamps 메서드는 created_at updated_at 컬럼 생성
-                                  
-            
+            $table->boolean('permission')->default(0);
+            $table->timestamp('email_verified_at')->nullable();
+            $table->rememberToken();
+            $table->timestamps();
         });
     }
 
@@ -35,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('users');
     }
 };
