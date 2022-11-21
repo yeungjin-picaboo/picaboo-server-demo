@@ -30,7 +30,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->routes(function () {
             Route::middleware('api')
-                ->prefix('api')
+                ->prefix('api') //api 라는 prefix 가 붙음
                 ->group(base_path('routes/api.php'));
 
             Route::middleware('web')
