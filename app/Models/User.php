@@ -2,52 +2,51 @@
 
 namespace App\Models;
 
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+//use Laravel\Sanctum\HasApiTokens;
+use Laravel\Passport\HasApiTokens;// 사용자의 토큰 범위 확인하는 헬퍼 메서드 제공
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-    public function answer(){ //TODO answer 테이블과 1:N관계
-        return $this -> hasMany(Answer::class);
-    }
-    public function selling(){  //TODO selling 테이블과 1:N관계
-        return $this -> hasMany(Selling::class);
-    }
-    public function question(){  //TODO question 테이블과 1:N관계
-        return $this -> hasMany(Question::class);
-    }
-    public function notice(){  //TODO notice 테이블과 1:N관계
-        return $this -> hasMany(Notice::class);
-    }
-    public function comment(){  //TODO notice 테이블과 1:N관계
-        return $this -> hasMany(Comment::class);
-    }
 
-
-    protected $primaryKey = 'user_id'; //* 기본적으론 id가 기본키로 잡힘
     /**
-     * The table associated with the model.
+     * The attributes that are mass assignable.
      *
-     * @var string
+     * @var array<int, string>
      */
-    protected $table = 'users';
-
     protected $fillable = [
-        'user_id',
-        'password',
         'name',
+        'email',
+        'password',
         'user_nickname',
         'user_phnum',
-        'user_email',
     ];
-    
-    protected $guarded = [ // 대량할당 불가능, 임의 수정 불가능
-        'permission',
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    protected $guarded = [
+        'id',
         'created_at',
         'updated_at'
+    ];
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
     ];
 }
