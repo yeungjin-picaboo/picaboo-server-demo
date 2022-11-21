@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'api' => [
+            'driver' => 'passport', //API request 가 유입될 때 passport 의 TokenGuard 를 사용
+            'provider' => 'users',
+        ],
     ],
 
     /*
