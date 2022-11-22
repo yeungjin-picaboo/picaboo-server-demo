@@ -9,7 +9,7 @@ use Illuminate\Http\Response;
 class RequestValidResponder
 {
 
-    protected $reponse;
+    protected $response;
 
     public function __construct(Response $response)
     {
