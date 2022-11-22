@@ -44,7 +44,17 @@ Route::prefix('/board')->group(function () {
 Route::prefix('/question')->group(function () {
     Route::middleware(['auth:api'])->group(function () {
         Route::post('/write', \App\Question\Actions\CreateQuestionAction::class)->name('question.create');
+        Route::delete('/delete/{question_num}', \App\Question\Actions\DeleteQuestionAction::class)->name('question.delete');
+        Route::put('/put/{question_num}',\App\Question\Actions\UpdateQuestionAction::class);
+    }
+    );
+});
 
+Route::prefix('/answer')->group(function () {
+    Route::middleware(['auth:api'])->group(function () {
+        Route::post('/write/{question_num}', \App\Answer\Actions\CreateAnswerAction::class)->name('answer.create');
+//        Route::delete('/delete/{question_num}', \App\Question\Actions\DeleteQuestionAction::class)->name('question.delete');
+//        Route::put('/put/{question_num}',\App\Question\Actions\UpdateQuestionAction::class);
     }
     );
 });
