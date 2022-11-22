@@ -196,7 +196,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         \App\Providers\BoardServiceProvider::class,
-        \App\Providers\QuestionServiceProvider::class
+        \App\Providers\QuestionServiceProvider::class,
+        \App\Providers\AnswerServiceProvider::class,
     ],
 
     /*
