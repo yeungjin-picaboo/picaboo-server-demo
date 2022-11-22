@@ -44,7 +44,7 @@ class CreateAnswerAction extends Controller
 //        Log::info("this is QsCheck");
 //        Log::info($QsCheck === false);
 
-        if ($valid->fails() || $QsCheck) {
+        if ($valid->fails() || $QsCheck === false) {
             return $this->validResponder->response($valid);
         }
 
