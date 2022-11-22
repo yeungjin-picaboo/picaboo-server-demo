@@ -5,7 +5,7 @@ namespace App\SellingBoard\Domain\Repositories;
 use App\SellingBoard\Domain\Entities\Selling;
 
 
-class EditSellingBoardRepository implements EditSellingBoardRepositoryInterface
+class UpdateSellingBoardRepository implements UpdateSellingBoardRepositoryInterface
 {
     public function edited($selling_num, $edited)
     {

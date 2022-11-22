@@ -3,6 +3,6 @@
 namespace App\SellingBoard\Domain\Repositories;
 
 
-interface EditSellingBoardRepositoryInterface{
+interface UpdateSellingBoardRepositoryInterface{
     public function edited($selling_num,$edited);
 }

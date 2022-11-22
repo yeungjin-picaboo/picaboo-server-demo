@@ -17,8 +17,8 @@ class CreateSellingBoardAction extends Controller
 
     public function __construct(
         CreateSellingBoardRepositoryInterface $createBoard,
-        RequestResponder $requestResponder,
-        RequestValidResponder $validResponder
+        RequestResponder                      $requestResponder,
+        RequestValidResponder                 $validResponder
     )
     {
         $this->createBoard = $createBoard;
@@ -29,21 +29,21 @@ class CreateSellingBoardAction extends Controller
     public function __invoke(Request $request)
     {
         Log::info($request);
-        $valid = validator($request->only('title' , 'content'),[
-            'title' =>'required|string|max:255',
-            'content'=> 'required|string',
+        $valid = validator($request->only('title', 'content'), [
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
         ]);
 
 
-        if($valid->fails()){
+        if ($valid->fails()) {
             return $this->validResponder->response($valid);
         }
 
-        $data = request()->only('title','content');
+        $data = request()->only('title', 'content');
 
         $check = $this->createBoard->create($data);
 
-        return $this->requestResponder->response($check,"create","selling");
+        return $this->requestResponder->response($check, "create", "selling");
 
     }
 }

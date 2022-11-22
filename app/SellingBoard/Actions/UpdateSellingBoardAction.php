@@ -6,7 +6,7 @@ use App\Common\Responders\CheckUserResponder;
 use App\Common\Responders\RequestResponder;
 use App\Http\Controllers\Controller;
 use App\SellingBoard\Domain\Repositories\CheckUserSellingRepositortyInterface;
-use App\SellingBoard\Domain\Repositories\EditSellingBoardRepositoryInterface;
+use App\SellingBoard\Domain\Repositories\UpdateSellingBoardRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Common\Responders\RequestValidResponder;
 
@@ -19,11 +19,11 @@ class UpdateSellingBoardAction extends Controller
     protected $validResponder;
 
     public function __construct(
-        EditSellingBoardRepositoryInterface  $editSellingBoard,
-        CheckUserSellingRepositortyInterface $checkUser,
-        RequestResponder                     $requestResponder,
-        CheckUserResponder                   $checkUserResponder,
-        RequestValidResponder                $validResponder
+        UpdateSellingBoardRepositoryInterface $editSellingBoard,
+        CheckUserSellingRepositortyInterface  $checkUser,
+        RequestResponder                      $requestResponder,
+        CheckUserResponder                    $checkUserResponder,
+        RequestValidResponder                 $validResponder
     )
     {
         $this->editSellingBoard = $editSellingBoard;
