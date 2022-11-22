@@ -1,6 +1,6 @@
 <?php
 namespace App\Question\Domain\Repositories;
 
-interface CheckUserQuestionRepositortyInterface{
+interface CheckUserQuestionRepositoryInterface{
     public function check($id):bool;
 }

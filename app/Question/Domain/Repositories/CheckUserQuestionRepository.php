@@ -3,7 +3,7 @@ namespace App\Question\Domain\Repositories;
 
 use App\Question\Domain\Entities\Question;
 
-class CheckUserQuestionRepository implements CheckUserQuestionRepositortyInterface {
+class CheckUserQuestionRepository implements CheckUserQuestionRepositoryInterface {
     public function check($question_num): bool // 유저가 작성한 글이 맞는지 확인하는 클래스
     {
 //        \Log::info('num is'.$question_num);
