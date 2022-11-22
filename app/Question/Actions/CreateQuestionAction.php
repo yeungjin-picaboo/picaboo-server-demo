@@ -29,10 +29,11 @@ class CreateQuestionAction extends Controller
 
     public function __invoke(Request $request)
     {
-//        Log::info($request);
-        $valid = validator($request->only('question_title', 'question_content'), [
-            'question_title' => 'required|string|max:255',
-            'question_content' => 'required|string',
+        Log::info("In CreateQuestionAction");
+        Log::info($request);
+        $valid = validator($request->only('Question_title', 'Question_content'), [
+            'Question_title' => 'required|string|max:255',
+            'Question_content' => 'required|string',
         ]);
 
 
@@ -40,8 +41,9 @@ class CreateQuestionAction extends Controller
             return $this->validResponder->response($valid);
         }
 
-        $data = request()->only('question_title', 'question_content');
+        $data = request()->only('Question_title', 'Question_content');
 
+        Log::info($data);
         $check = $this->createQuestion->create($data);
 
         return $this->requestResponder->response($check, "create", "Question");

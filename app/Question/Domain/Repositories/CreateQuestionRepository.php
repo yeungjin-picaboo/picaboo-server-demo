@@ -2,6 +2,7 @@
 
 namespace App\Question\Domain\Repositories;
 
+
 use App\Question\Domain\Entities\Question;
 use Illuminate\Support\Facades\Auth;
 
