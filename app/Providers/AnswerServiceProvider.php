@@ -10,6 +10,10 @@ use App\Answer\Domain\Repositories\CheckUserPermissionRepository;
 use App\Answer\Domain\Repositories\CheckUserPermissionRepositoryInterface;
 use App\Answer\Domain\Repositories\CreateAnswerRepository;
 use App\Answer\Domain\Repositories\CreateAnswerRepositoryInterface;
+use App\Answer\Domain\Repositories\DeleteAnswerRepository;
+use App\Answer\Domain\Repositories\DeleteAnswerRepositoryInterface;
+use App\Answer\Domain\Repositories\UpdateAnswerRepository;
+use App\Answer\Domain\Repositories\UpdateAnswerRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AnswerServiceProvider extends ServiceProvider
@@ -25,6 +29,8 @@ class AnswerServiceProvider extends ServiceProvider
         $this->app->bind(CheckUserPermissionRepositoryInterface::class,CheckUserPermissionRepository::class);
         $this->app->bind(CheckUserAnswerRepositortyInterface::class,CheckUserAnswerRepository::class);
         $this->app->bind(CreateAnswerRepositoryInterface::class,CreateAnswerRepository::class);
+        $this->app->bind(DeleteAnswerRepositoryInterface::class,DeleteAnswerRepository::class);
+        $this->app->bind(UpdateAnswerRepositoryInterface::class,UpdateAnswerRepository::class);
     }
 
     /**
