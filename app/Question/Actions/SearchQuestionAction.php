@@ -6,36 +6,35 @@ namespace App\Question\Actions;
 use App\Common\Responders\RequestResponder;
 use App\Common\Responders\RequestValidResponder;
 use App\Http\Controllers\Controller;
-use App\Question\Domain\Repositories\CreateQuestionRepositoryInterface;
+use App\Question\Domain\Repositories\SearchQuestionRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-class CreateQuestionAction extends Controller
+class SearchQuestionAction extends Controller
 {
-    protected $createQuestion;
+    protected $searchQuestion;
     protected $requestResponder;
     protected $validResponder;
 
     public function __construct(
-        CreateQuestionRepositoryInterface $createQuestion,
+        SearchQuestionRepositoryInterface $searchQuestion,
         RequestResponder                  $requestResponder,
         RequestValidResponder             $validResponder
     )
     {
-        $this->createQuestion = $createQuestion;
+        $this->searchQuestion = $searchQuestion;
         $this->requestResponder = $requestResponder;
         $this->validResponder = $validResponder;
     }
 
     public function __invoke(Request $request)
     {
-        Log::info("In CreateQuestionAction");
+        Log::info("In SearchQuestionAction");
         Log::info($request);
 
 
-        $valid = validator($request->only('question_title', 'question_content'), [
-            'question_title' => 'required|string|max:255',
-            'question_content' => 'required|string',
+        $valid = validator($request->only( 'search_title'), [
+            'search_title' => 'required|string|max:255',
         ]);
 
 
@@ -43,12 +42,12 @@ class CreateQuestionAction extends Controller
             return $this->validResponder->response($valid);
         }
 
-        $data = request()->only('question_title', 'question_content');
+        $data = request()->only('search_title');
 
-        Log::info($data);
-        $check = $this->createQuestion->create($data);
 
-        return $this->requestResponder->response($check, "create", "question");
+        $check = $this->searchQuestion->search($data);
+
+        return $this->requestResponder->response($check, "Search", "question");
 
     }
 }

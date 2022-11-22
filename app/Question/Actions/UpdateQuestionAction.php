@@ -5,7 +5,9 @@ namespace App\Question\Actions;
 use App\Common\Responders\CheckUserResponder;
 use App\Common\Responders\RequestResponder;
 use App\Http\Controllers\Controller;
-use App\Question\Domain\Repositories\CheckUserQuestionRepositortyInterface;
+
+
+use App\Question\Domain\Repositories\CheckUserQuestionRepositoryInterface;
 use App\Question\Domain\Repositories\UpdateQuestionRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Common\Responders\RequestValidResponder;
@@ -20,7 +22,7 @@ class UpdateQuestionAction extends Controller
 
     public function __construct(
         UpdateQuestionRepositoryInterface $editQuestion,
-        CheckUserQuestionRepositortyInterface  $checkUser,
+        CheckUserQuestionRepositoryInterface  $checkUser,
         RequestResponder                      $requestResponder,
         CheckUserResponder                    $checkUserResponder,
         RequestValidResponder                 $validResponder

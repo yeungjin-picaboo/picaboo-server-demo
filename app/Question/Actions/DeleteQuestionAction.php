@@ -6,7 +6,7 @@ namespace App\Question\Actions;
 use App\Common\Responders\CheckUserResponder;
 use App\Common\Responders\RequestResponder;
 use App\Http\Controllers\Controller;
-use App\Question\Domain\Repositories\CheckUserQuestionRepositortyInterface;
+use App\Question\Domain\Repositories\CheckUserQuestionRepositoryInterface;
 use App\Question\Domain\Repositories\DeleteQuestionRepositoryInterface;
 use Illuminate\Support\Facades\Request;
 
@@ -21,7 +21,7 @@ class DeleteQuestionAction extends Controller
 
     public function __construct(
         DeleteQuestionRepositoryInterface     $deleteQuestion,
-        CheckUserQuestionRepositortyInterface $checkUser,
+        CheckUserQuestionRepositoryInterface $checkUser,
         RequestResponder                      $requestResponder,
         CheckUserResponder                    $checkUserResponder
     )
@@ -37,7 +37,7 @@ class DeleteQuestionAction extends Controller
 //        \Log::info($id); -> url Id를 가져와줌
         $check = $this->checkUser->check($Question_num);
 
-        if ($check == false) { // 유효하지 않은 글번호일시
+        if ($check === false) { // 유효하지 않은 글번호일시
             return $this->checkUserResponder->response();
         }
 
