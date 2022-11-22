@@ -46,6 +46,14 @@ Route::prefix('/question')->group(function () {
         Route::post('/write', \App\Question\Actions\CreateQuestionAction::class)->name('question.create');
         Route::delete('/delete/{question_num}', \App\Question\Actions\DeleteQuestionAction::class)->name('question.delete');
         Route::put('/put/{question_num}',\App\Question\Actions\UpdateQuestionAction::class);
+
+
+        Route::prefix('/search')->group(function (){
+        Route::post('/title',\App\Question\Actions\SearchQuestionAction::class);
+        Route::post('/user',\App\Question\Actions\SearchQuestionUserAction::class);
+        });
+
+
     }
     );
 });
@@ -53,8 +61,9 @@ Route::prefix('/question')->group(function () {
 Route::prefix('/answer')->group(function () {
     Route::middleware(['auth:api'])->group(function () {
         Route::post('/write/{question_num}', \App\Answer\Actions\CreateAnswerAction::class)->name('answer.create');
-//        Route::delete('/delete/{question_num}', \App\Question\Actions\DeleteQuestionAction::class)->name('question.delete');
-//        Route::put('/put/{question_num}',\App\Question\Actions\UpdateQuestionAction::class);
+        Route::delete('/delete/{question_num}', \App\Answer\Actions\DeleteAnswerAction::class)->name('answer.delete');
+        Route::put('/put/{question_num}',\App\Answer\Actions\UpdateAnswerAction::class);
+
     }
     );
 });
