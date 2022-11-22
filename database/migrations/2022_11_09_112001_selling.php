@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id('selling_num');;
             $table->string('title','100');
             $table->string('email');
+//                ->constrained('users');
             $table->string('user_nickname');
             $table->string('content','1000');
             $table->integer('views')->nullable();
