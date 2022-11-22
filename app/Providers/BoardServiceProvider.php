@@ -10,8 +10,8 @@ use App\SellingBoard\Domain\Repositories\CreateSellingBoardRepository;
 use App\SellingBoard\Domain\Repositories\CreateSellingBoardRepositoryInterface;
 use App\SellingBoard\Domain\Repositories\DeleteSellingBoardRepository;
 use App\SellingBoard\Domain\Repositories\DeleteSellingBoardRepositoryInterface;
-use App\SellingBoard\Domain\Repositories\EditSellingBoardRepository;
-use App\SellingBoard\Domain\Repositories\EditSellingBoardRepositoryInterface;
+use App\SellingBoard\Domain\Repositories\UpdateSellingBoardRepository;
+use App\SellingBoard\Domain\Repositories\UpdateSellingBoardRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class BoardServiceProvider extends ServiceProvider
@@ -26,7 +26,7 @@ class BoardServiceProvider extends ServiceProvider
         $this->app->bind(CreateSellingBoardRepositoryInterface::class, CreateSellingBoardRepository::class);
         $this->app->bind(CheckUserSellingRepositortyInterface::class, CheckUserSellingRepository::class);
         $this->app->bind(DeleteSellingBoardRepositoryInterface::class , DeleteSellingBoardRepository::class);
-        $this->app->bind(EditSellingBoardRepositoryInterface::class,EditSellingBoardRepository::class);
+        $this->app->bind(UpdateSellingBoardRepositoryInterface::class,UpdateSellingBoardRepository::class);
 
     }
 
