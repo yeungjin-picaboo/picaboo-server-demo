@@ -4,6 +4,7 @@
 namespace App\Answer\Domain\Entities;
 
 use App\Models\User;
+use App\Question\Domain\Entities\Question;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
