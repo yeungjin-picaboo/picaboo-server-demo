@@ -14,8 +14,9 @@ class CheckUserAnswerRepository implements CheckUserAnswerRepositortyInterface
         $nowUser = Answer::where('answer_num', $answer_num);
 
         if ($nowUser->exists()) {
-            if (Auth::user()->email !== $nowUser->value('email') &&
-                Auth::user()->permission !== 0) {
+            if (Auth::user()->user_nickname !== $nowUser->value('user_nickname')
+//                && Auth::user()->permission !== 0
+            ) {
                 return false;
             }
         };

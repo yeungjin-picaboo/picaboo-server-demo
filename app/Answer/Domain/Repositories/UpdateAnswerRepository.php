@@ -7,11 +7,12 @@ use App\Answer\Domain\Entities\Answer;
 
 class UpdateAnswerRepository implements UpdateAnswerRepositoryInterface
 {
-    public function update($Answer_num, $modified_content):bool
+    public function update($answer_num, $modified_content):bool
     {
+        $search_user = Answer::where('answer_num', $answer_num);
         \Log::info($modified_content);
-        if (Answer::where('Answer_num', $Answer_num)->exists()) {
-            Answer::where('Answer_num', $Answer_num)
+        if ($search_user->exists()) {
+            $search_user
                 ->update(
                     $modified_content->all()
                 );
