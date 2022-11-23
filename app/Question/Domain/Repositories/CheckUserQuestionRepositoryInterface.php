@@ -2,5 +2,9 @@
 namespace App\Question\Domain\Repositories;
 
 interface CheckUserQuestionRepositoryInterface{
-    public function check($id):bool;
+    /**
+     * @param $question_num 글 번호
+     * @return bool
+     */
+    public function check($question_num):bool;
 }
