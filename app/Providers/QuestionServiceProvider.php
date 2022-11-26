@@ -14,6 +14,7 @@ use App\Question\Domain\Repositories\DeleteQuestionRepositoryInterface;
 
 use App\Question\Domain\Repositories\SearchQuestionToTitleRepository;
 use App\Question\Domain\Repositories\SearchQuestionRepositoryInterface;
+use App\Question\Domain\Repositories\SearchQuestionToTitleRepositoryInterface;
 use App\Question\Domain\Repositories\SearchQuestionUserInterface;
 use App\Question\Domain\Repositories\SearchQuestionUserRepository;
 use App\Question\Domain\Repositories\UpdateQuestionRepository;
@@ -35,7 +36,7 @@ class QuestionServiceProvider extends ServiceProvider
         $this->app->bind(CreateQuestionRepositoryInterface::class,CreateQuestionRepository::class);
         $this->app->bind(DeleteQuestionRepositoryInterface::class,DeleteQuestionRepository::class);
         $this->app->bind(UpdateQuestionRepositoryInterface::class,UpdateQuestionRepository::class);
-        $this->app->bind(SearchQuestionRepositoryInterface::class,SearchQuestionToTitleRepository::class);
+        $this->app->bind(SearchQuestionToTitleRepositoryInterface::class,SearchQuestionToTitleRepository::class);
         $this->app->bind(SearchQuestionUserInterface::class,SearchQuestionUserRepository::class);
     }
 

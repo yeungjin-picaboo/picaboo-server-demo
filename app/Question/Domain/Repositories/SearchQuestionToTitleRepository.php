@@ -5,7 +5,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
 
 
-class SearchQuestionToTitleRepository implements SearchQuestionRepositoryInterface
+class SearchQuestionToTitleRepository implements SearchQuestionToTitleRepositoryInterface
 {
     public function search($search_content): bool // 유저가 작성한 글
     {
@@ -14,7 +14,7 @@ class SearchQuestionToTitleRepository implements SearchQuestionRepositoryInterfa
                 , 'Like'
                 ,'%'.$search_content['search_title'].'%'
             );
-        \Log::info($nowUser);
+
         if ($nowUser->exists()) {
             \Log::info('true return');
             return true;

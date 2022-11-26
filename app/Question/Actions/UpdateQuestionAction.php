@@ -38,16 +38,16 @@ class UpdateQuestionAction extends Controller
     public function __invoke(Request $request,$Question_num)
     {
         \Log::info($request);
-        $valid = validator($request->only('Question_title' , 'Question_content'),[
-            'Question_title' =>'required|string|max:255',
-            'Question_content'=> 'required|string',
+        $valid = validator($request->only('question_title' , 'question_content'),[
+            'question_title' =>'required|string|max:255',
+            'question_content'=> 'required|string',
         ]);
 
         if($valid->fails()){
             return $this->validResponder->response($valid);
         }
 
-        $check = $this->checkUser->check($Question_num); //TODO 유저의 유효성을 검사하는 코드
+        $check = $this->checkUser->check($Question_num); //TODO 유저의 유효성 및 글번호를 검사하는 코드
 
         if($check == false){
             return $this -> checkUserResponder->response();

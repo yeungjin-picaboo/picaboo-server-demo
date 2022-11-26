@@ -14,6 +14,8 @@ class UpdateSellingBoardRepository implements UpdateSellingBoardRepositoryInterf
             Selling::where('selling_num', $selling_num)
                 ->update(
                     $edited->all()
+
+
                 );
             return true;
         } else {

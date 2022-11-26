@@ -3,7 +3,7 @@
 namespace App\Question\Domain\Repositories;
 
 
-interface SearchQuestionRepositoryInterface
+interface SearchQuestionToTitleRepositoryInterface
 {
     /**
      * @param $search_content 검색 내용, 혹은 닉네임

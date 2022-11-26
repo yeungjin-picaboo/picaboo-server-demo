@@ -6,7 +6,7 @@ namespace App\Question\Actions;
 use App\Common\Responders\RequestResponder;
 use App\Common\Responders\RequestValidResponder;
 use App\Http\Controllers\Controller;
-use App\Question\Domain\Repositories\SearchQuestionRepositoryInterface;
+use App\Question\Domain\Repositories\SearchQuestionToTitleRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -17,7 +17,7 @@ class SearchQuestionAction extends Controller
     protected $validResponder;
 
     public function __construct(
-        SearchQuestionRepositoryInterface $searchQuestion,
+        SearchQuestionToTitleRepositoryInterface $searchQuestion,
         RequestResponder                  $requestResponder,
         RequestValidResponder             $validResponder
     )

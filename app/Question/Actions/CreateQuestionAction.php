@@ -33,9 +33,9 @@ class CreateQuestionAction extends Controller
         Log::info($request);
 
 
-        $valid = validator($request->only('question_title', 'question_content'), [
-            'question_title' => 'required|string|max:255',
-            'question_content' => 'required|string',
+        $valid = validator($request->only('question', 'description'), [
+            'question' => 'required|string|max:255',
+            'description' => 'required|string',
         ]);
 
 
@@ -43,7 +43,8 @@ class CreateQuestionAction extends Controller
             return $this->validResponder->response($valid);
         }
 
-        $data = request()->only('question_title', 'question_content');
+        Log::info("request success");
+        $data = request()->only('question', 'description');
 
         Log::info($data);
         $check = $this->createQuestion->create($data);

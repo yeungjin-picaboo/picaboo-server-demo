@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('question_content','1000');
             $table->timestamps();
 
-            $table->foreign('email')->references('email')->on('users');
-            $table->foreign('user_nickname')->references('user_nickname')->on('users');
+//            $table->foreign('email')->references('email')->on('users');
+//            $table->foreign('user_nickname')->references('user_nickname')->on('users');
         });
     }
 

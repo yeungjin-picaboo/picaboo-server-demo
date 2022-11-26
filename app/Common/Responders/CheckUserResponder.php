@@ -6,7 +6,7 @@ use Illuminate\Http\Response;
 
 class CheckUserResponder{
 
-    protected $reponse;
+    protected $response;
 
     public function __construct(Response $response){
         $this->response = $response;
@@ -15,7 +15,7 @@ class CheckUserResponder{
     public function response():Response{
         $this->response->setContent([
             'ok' =>false,
-            'message' => "you can not delete this notice",
+            'message' => "you can not delete this notice Cause cannot match user",
         ]);
         $this->response->setStatusCode(Response::HTTP_FORBIDDEN);
         return $this->response;

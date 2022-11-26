@@ -5,7 +5,7 @@ namespace App\SellingBoard\Actions;
 use App\Common\Responders\CheckUserResponder;
 use App\Common\Responders\RequestResponder;
 use App\Http\Controllers\Controller;
-use App\SellingBoard\Domain\Repositories\CheckUserSellingRepositortyInterface;
+use App\SellingBoard\Domain\Repositories\CheckUserSellingRepositoryInterface;
 use App\SellingBoard\Domain\Repositories\UpdateSellingBoardRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Common\Responders\RequestValidResponder;
@@ -20,7 +20,7 @@ class UpdateSellingBoardAction extends Controller
 
     public function __construct(
         UpdateSellingBoardRepositoryInterface $editSellingBoard,
-        CheckUserSellingRepositortyInterface  $checkUser,
+        CheckUserSellingRepositoryInterface   $checkUser,
         RequestResponder                      $requestResponder,
         CheckUserResponder                    $checkUserResponder,
         RequestValidResponder                 $validResponder

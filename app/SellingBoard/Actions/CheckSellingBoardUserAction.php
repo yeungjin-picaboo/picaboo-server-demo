@@ -3,14 +3,14 @@
 namespace App\SellingBoard\Actions;
 
 use App\Http\Controllers\Controller;
-use App\SellingBoard\Domain\Repositories\CheckUserSellingRepositortyInterface;
+use App\SellingBoard\Domain\Repositories\CheckUserSellingRepositoryInterface;
 
 class CheckSellingBoardUserAction extends Controller
 {
     protected $checkUser;
 
     public function __construct(
-        CheckUserSellingRepositortyInterface $checkUser
+        CheckUserSellingRepositoryInterface $checkUser
     )
     {
         $this -> checkUser = $checkUser;

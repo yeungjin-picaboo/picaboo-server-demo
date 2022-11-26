@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use App\SellingBoard\Actions\DeleteSellingBoardAction;
 use App\SellingBoard\Domain\Repositories\CheckUserQuestionRepository;
-use App\SellingBoard\Domain\Repositories\CheckUserSellingRepositortyInterface;
+use App\SellingBoard\Domain\Repositories\CheckUserSellingRepositoryInterface;
 use App\SellingBoard\Domain\Repositories\CheckUserSellingRepository;
 use App\SellingBoard\Domain\Repositories\CreateSellingBoardRepository;
 use App\SellingBoard\Domain\Repositories\CreateSellingBoardRepositoryInterface;
@@ -24,7 +24,7 @@ class BoardServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(CreateSellingBoardRepositoryInterface::class, CreateSellingBoardRepository::class);
-        $this->app->bind(CheckUserSellingRepositortyInterface::class, CheckUserSellingRepository::class);
+        $this->app->bind(CheckUserSellingRepositoryInterface::class, CheckUserSellingRepository::class);
         $this->app->bind(DeleteSellingBoardRepositoryInterface::class , DeleteSellingBoardRepository::class);
         $this->app->bind(UpdateSellingBoardRepositoryInterface::class,UpdateSellingBoardRepository::class);
 

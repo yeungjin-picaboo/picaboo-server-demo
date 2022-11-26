@@ -1,6 +1,6 @@
 <?php
 namespace App\SellingBoard\Domain\Repositories;
 
-interface CheckUserSellingRepositortyInterface{
+interface CheckUserSellingRepositoryInterface{
     public function check($id):bool;
 }
