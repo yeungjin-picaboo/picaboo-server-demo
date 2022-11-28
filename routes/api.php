@@ -19,17 +19,21 @@ use Illuminate\Support\Facades\Route;
 //}); api.php 라서 api 가 자체적으로 붙음
 // rootUrl/api/register
 
-//Route::prefix('/user')->group(function () {
-//    Route::post('/register', [\App\Http\Controllers\API\AuthController::class, 'register'])->name('user.register');
-//    Route::post('/login', [\App\Http\Controllers\API\AuthController::class, 'login'])->name('user.login');
-//    Route::post('/token-refresh', [\App\Http\Controllers\API\AuthController::class, 'tokenRefresh'])->name('user.token-refresh');
-//
-//    //인증 처리가 된 부분
-//    Route::middleware('auth:api')->group(function () {
-//        Route::get('/info', [\App\Http\Controllers\API\UserController::class, 'currentUserInfo'])->name('user.info');
-//        Route::get('/all', [\App\Http\Controllers\API\UserController::class, 'fetchUsers'])->name('user.fetch-user');
-//    });
-//});
+Route::get('/hello',function (){
+   Log::info("hello");
+});
+
+Route::prefix('/user')->group(function () {
+    Route::post('/register', [\App\Http\Controllers\API\AuthController::class, 'register'])->name('user.register');
+    Route::post('/login', [\App\Http\Controllers\API\AuthController::class, 'login'])->name('user.login');
+    Route::post('/token-refresh', [\App\Http\Controllers\API\AuthController::class, 'tokenRefresh'])->name('user.token-refresh');
+
+    //인증 처리가 된 부분
+    Route::middleware('auth:api')->group(function () {
+        Route::get('/info', [\App\Http\Controllers\API\UserController::class, 'currentUserInfo'])->name('user.info');
+        Route::get('/all', [\App\Http\Controllers\API\UserController::class, 'fetchUsers'])->name('user.fetch-user');
+    });
+});
 
 
 //Route::prefix('/board')->group(function () {
