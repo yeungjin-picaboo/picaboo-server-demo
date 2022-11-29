@@ -44,7 +44,7 @@ class CreateQuestionAction extends Controller
         }
 
         Log::info("request success");
-        $data = request()->only('question', 'description');
+        $data = request()->only('question', 'description','writer','isPrivate');
 
         Log::info($data);
         $check = $this->createQuestion->create($data);
