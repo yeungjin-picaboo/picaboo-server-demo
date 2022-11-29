@@ -35,25 +35,29 @@ class UpdateQuestionAction extends Controller
         $this->validResponder = $validResponder;
     }
 
-    public function __invoke(Request $request,$Question_num)
+    public function __invoke(Request $request,$question_num)
     {
+        // question_num(질문 글 번호) -> url api/qna/{question_num}
         \Log::info($request);
-        $valid = validator($request->only('question_title' , 'question_content'),[
-            'question_title' =>'required|string|max:255',
-            'question_content'=> 'required|string',
+        //TODO 입력한 값 유효성 검사
+        $valid = validator($request->only('question' , 'description'),[
+            'question' =>'required|string|max:255',
+            'description'=> 'required|string',
         ]);
 
         if($valid->fails()){
             return $this->validResponder->response($valid);
         }
 
-        $check = $this->checkUser->check($Question_num); //TODO 유저의 유효성 및 글번호를 검사하는 코드
+        //TODO 유저의 유효성 및 글번호를 검사하는 코드 -> CheckUserQuestionRepository 함수 사용
+        $check = $this->checkUser->check($question_num);
 
         if($check == false){
             return $this -> checkUserResponder->response();
         }
 
-        $edit = $this->editQuestion->update($Question_num,$request);
+        // question_num = 질문글 번호 / request에는 question, description이 있음
+        $edit = $this->editQuestion->update($question_num,$request);
 
         return $this->requestResponder->response($edit,"edited","Question");
 
