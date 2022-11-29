@@ -40,20 +40,22 @@ class ShowQuestionAction extends Controller
 
     public function __invoke(Request $request)
     {
-        //쿼리스트링 파라미터에 page가 있는지
+        //쿼리스트링 파라미터에 page가 있는지 (page =  페이지네이션 할 때 필요한 파라미터 ) 가 있는지
         $page = $request->input('page');
-        //쿼리스트링 파라미터에 search가 있는지
+        //쿼리스트링 파라미터에 search가 (search =  검색 할 때 필요한 파라미터 )있는지
         $search = $request->input('search');
         \Log::info($search);
 
         if (isset($page)) {
+            // 페이지네이션 할 때 리턴해주는 값(1페이지당 12개)
             $paginate = $this->showPagination->showPage($page);
             return $paginate;
         } else if (isset($search)) {
+            // 검색했을 때 리턴해주는 값( 페이지 구분 x )
             $searchTitle = $this->searchToTitle->search($search);
             return $searchTitle;
         } else {
-            // 전체 개시글 조회
+            // 전체 게시글 데이터
             $show = $this->showQuestion->show();
             return $show;
         }
