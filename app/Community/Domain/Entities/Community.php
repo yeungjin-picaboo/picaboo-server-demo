@@ -1,31 +1,30 @@
 <?php
 
-namespace App\SellingBoard\Domain\Entities;
+namespace App\Community\Domain\Entities;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Selling extends Model
+class Community extends Model
 {
     use HasFactory;
 
-    public function selling()
+    public function community()
     {
         //Todo user 테이블과 1:N관계
         return $this->belongsTo(User::class);
     }
 
-    protected $table = 'sellings';
+    protected $table = 'communities';
 
 
-    protected $primaryKey = 'selling_num';
+    protected $primaryKey = 'communities_num';
 
     protected $fillable = [
         'title',
         'content',
-        'email',
-        'user_nickname',
+        'writer',
         'views',
     ];
 

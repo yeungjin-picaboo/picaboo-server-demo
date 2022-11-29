@@ -1,14 +1,14 @@
 <?php
-namespace App\SellingBoard\Domain\Repositories;
+namespace App\Community\Domain\Repositories;
 
-use App\SellingBoard\Domain\Entities\Selling;
+use App\Community\Domain\Entities\Community;
 
 
 class CheckUserSellingRepository implements CheckUserSellingRepositoryInterface{
     public function check($selling_num): bool
     {
         \Log::info('num is'.$selling_num);
-        $nowUser = Selling::where('selling_num',$selling_num);
+        $nowUser = Community::where('selling_num',$selling_num);
     \Log::info($nowUser->exists());
         if($nowUser->exists()){
             if(\Auth::user()->email !== $nowUser->value('email')){

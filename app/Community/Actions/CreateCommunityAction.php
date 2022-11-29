@@ -1,22 +1,22 @@
 <?php
 
-namespace App\SellingBoard\Actions;
+namespace App\Community\Actions;
 
 use App\Common\Responders\RequestResponder;
 use App\Common\Responders\RequestValidResponder;
 use App\Http\Controllers\Controller;
-use App\SellingBoard\Domain\Repositories\CreateSellingBoardRepositoryInterface;
+use App\Community\Domain\Repositories\CreateCommunityRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-class CreateSellingBoardAction extends Controller
+class CreateCommunityAction extends Controller
 {
     protected $createBoard;
     protected $requestResponder;
     protected $validResponder;
 
     public function __construct(
-        CreateSellingBoardRepositoryInterface $createBoard,
+        CreateCommunityRepositoryInterface $createBoard,
         RequestResponder                      $requestResponder,
         RequestValidResponder                 $validResponder
     )

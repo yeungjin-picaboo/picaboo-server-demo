@@ -1,16 +1,16 @@
 <?php
 
-namespace App\SellingBoard\Actions;
+namespace App\Community\Actions;
 
 use App\Common\Responders\CheckUserResponder;
 use App\Common\Responders\RequestResponder;
 use App\Http\Controllers\Controller;
-use App\SellingBoard\Domain\Repositories\CheckUserSellingRepositoryInterface;
-use App\SellingBoard\Domain\Repositories\DeleteSellingBoardRepositoryInterface;
+use App\Community\Domain\Repositories\CheckUserSellingRepositoryInterface;
+use App\Community\Domain\Repositories\DeleteCommunityRepositoryInterface;
 use Illuminate\Support\Facades\Request;
 
 
-class DeleteSellingBoardAction extends Controller{
+class DeleteCommunityAction extends Controller{
 
     protected $deleteBoard;
     protected $checkUser;
@@ -18,7 +18,7 @@ class DeleteSellingBoardAction extends Controller{
     protected $checkUserResponder;
 
     public function __construct(
-        DeleteSellingBoardRepositoryInterface $deleteBoard,
+        DeleteCommunityRepositoryInterface $deleteBoard,
         CheckUserSellingRepositoryInterface   $checkUser,
         RequestResponder                      $requestResponder,
         CheckUserResponder                    $checkUserResponder

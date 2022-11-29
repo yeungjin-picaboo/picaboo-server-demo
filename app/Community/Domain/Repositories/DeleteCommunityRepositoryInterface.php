@@ -1,6 +1,6 @@
 <?php
-namespace App\SellingBoard\Domain\Repositories;
+namespace App\Community\Domain\Repositories;
 
-interface DeleteSellingBoardRepositoryInterface{
+interface DeleteCommunityRepositoryInterface{
     public function delete($selling_num):bool; // $selling_num검사를 했을때 맞는지
 }

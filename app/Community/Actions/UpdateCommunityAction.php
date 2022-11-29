@@ -1,32 +1,32 @@
 <?php
 
-namespace App\SellingBoard\Actions;
+namespace App\Community\Actions;
 
 use App\Common\Responders\CheckUserResponder;
 use App\Common\Responders\RequestResponder;
 use App\Http\Controllers\Controller;
-use App\SellingBoard\Domain\Repositories\CheckUserSellingRepositoryInterface;
-use App\SellingBoard\Domain\Repositories\UpdateSellingBoardRepositoryInterface;
+use App\Community\Domain\Repositories\CheckUserSellingRepositoryInterface;
+use App\Community\Domain\Repositories\ViewCommunityRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Common\Responders\RequestValidResponder;
 
-class UpdateSellingBoardAction extends Controller
+class UpdateCommunityAction extends Controller
 {
-    protected $editSellingBoard;
+    protected $editCommunity;
     protected $checkUser;
     protected $requestResponder;
     protected $checkUserResponder;
     protected $validResponder;
 
     public function __construct(
-        UpdateSellingBoardRepositoryInterface $editSellingBoard,
-        CheckUserSellingRepositoryInterface   $checkUser,
-        RequestResponder                      $requestResponder,
-        CheckUserResponder                    $checkUserResponder,
-        RequestValidResponder                 $validResponder
+        ViewCommunityRepositoryInterface    $editCommunity,
+        CheckUserSellingRepositoryInterface $checkUser,
+        RequestResponder                    $requestResponder,
+        CheckUserResponder                  $checkUserResponder,
+        RequestValidResponder               $validResponder
     )
     {
-        $this->editSellingBoard = $editSellingBoard;
+        $this->editCommunity = $editCommunity;
         $this->checkUser = $checkUser;
         $this->requestResponder = $requestResponder;
         $this->checkUserResponder = $checkUserResponder;
@@ -51,7 +51,7 @@ class UpdateSellingBoardAction extends Controller
             return $this -> checkUserResponder->response();
         }
 
-        $edit = $this->editSellingBoard->edited($id,$request);
+        $edit = $this->editCommunity->edited($id,$request);
 
         return $this->requestResponder->response($edit,"edited","board");
 

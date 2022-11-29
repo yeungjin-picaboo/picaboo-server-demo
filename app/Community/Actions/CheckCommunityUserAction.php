@@ -1,11 +1,11 @@
 <?php
 
-namespace App\SellingBoard\Actions;
+namespace App\Community\Actions;
 
 use App\Http\Controllers\Controller;
-use App\SellingBoard\Domain\Repositories\CheckUserSellingRepositoryInterface;
+use App\Community\Domain\Repositories\CheckUserSellingRepositoryInterface;
 
-class CheckSellingBoardUserAction extends Controller
+class CheckCommunityUserAction extends Controller
 {
     protected $checkUser;
 
