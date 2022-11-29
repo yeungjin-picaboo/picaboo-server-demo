@@ -1,27 +1,25 @@
 <?php
 
 namespace App\Question\Domain\Repositories;
+
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
 
 
 class SearchQuestionToTitleRepository implements SearchQuestionToTitleRepositoryInterface
 {
-    public function search($search_content): bool // 유저가 작성한 글
+    public function search($search_content): object // 유저가 작성한 글
     {
+        \Log::info($search_content);
         $nowUser = DB::table('questions')
-            ->where('question_title'
+            ->where('question'
                 , 'Like'
-                ,'%'.$search_content['search_title'].'%'
-            );
+                , '%' . $search_content . '%'
+            )->get();
 
-        if ($nowUser->exists()) {
-            \Log::info('true return');
-            return true;
-        } else {
-            \Log::info('false Return');
-            return false;
-        }
+        \Log::info($nowUser);
+        return $nowUser;
+
 
     }
 }

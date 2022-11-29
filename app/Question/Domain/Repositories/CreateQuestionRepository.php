@@ -5,17 +5,19 @@ namespace App\Question\Domain\Repositories;
 
 use App\Question\Domain\Entities\Question;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Passport\Passport;
 
 class CreateQuestionRepository implements CreateQuestionRepositoryInterface
 {
     public function create($data): bool
     {
+        \Log::info($data);
+        \Log::info(Auth::user());
         $question = Question::create([
-            'question_title' => $data['question'],
-            'question_content' => $data['description'],
-            'email' => "qweqwe@gmail.com",//Auth::user()->email,
-            'user_nickname' => "asdad",//Auth::user()->user_nickname,
-            'views' => 1,
+            'question' => $data['question'],
+            'description' => $data['description'],
+            'writer' => Auth::user()->user_nickname,
+            'isPrivate' => $data['isPrivate'],//Auth::user()->user_nickname
         ]);
         \Log::info('this data is '.$question);
 
