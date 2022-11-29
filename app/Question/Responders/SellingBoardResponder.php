@@ -1,6 +1,6 @@
 <?php
 
-namespace App\SellingBoard\Responders;
+namespace App\Community\Responders;
 
 use Illuminate\Http\Response;
 
