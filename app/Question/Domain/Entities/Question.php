@@ -20,11 +20,10 @@ class Question extends Model
     protected $primaryKey = 'question_num';
 
     protected $fillable = [
-        'email',
-        'user_nickname',
-        'views',
-        'question_title',
-        'question_content',
+        'answer',
+        'writer',
+        'question',
+        'description',
     ];
 
     protected $guarded = [
