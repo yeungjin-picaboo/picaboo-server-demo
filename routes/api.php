@@ -19,8 +19,8 @@ use Illuminate\Support\Facades\Route;
 //}); api.php 라서 api 가 자체적으로 붙음
 // rootUrl/api/register
 
-Route::get('/hello',function (){
-   Log::info("hello");
+Route::get('/hello', function () {
+    Log::info("hello");
 });
 
 Route::prefix('/user')->group(function () {
@@ -46,21 +46,23 @@ Route::prefix('/user')->group(function () {
 //});
 
 Route::prefix('/qna')->group(function () {
-//    Route::middleware(['auth:api'])->group(function () {
+    Route::get('/', \App\Question\Actions\ShowQuestionAction::class);
+    Route::get('/{question_num}', \App\Question\Actions\ShowQuestionAction::class);
+    Route::get('/{question_num}', \App\Question\Actions\ShowQuestionAction::class);
+    Route::prefix('/search')->group(function () {
+        Route::get('/title', \App\Question\Actions\SearchQuestionAction::class);
+        Route::get('/user', \App\Question\Actions\SearchQuestionUserAction::class);
+    });
+
+    Route::middleware(['auth:api'])->group(function () {
         Route::post('/create', \App\Question\Actions\CreateQuestionAction::class)->name('question.create');
         Route::delete('/delete/{question_num}', \App\Question\Actions\DeleteQuestionAction::class)->name('question.delete');
-        Route::put('/put/{question_num}',\App\Question\Actions\UpdateQuestionAction::class);
-
-
-//        Route::prefix('/search')->group(function (){
-//        Route::post('/title',\App\Question\Actions\SearchQuestionAction::class);
-//        Route::post('/user',\App\Question\Actions\SearchQuestionUserAction::class);
-//        });
+        Route::put('/put/{question_num}', \App\Question\Actions\UpdateQuestionAction::class);
 
 
     }
-//    );
-//}
+    );
+}
 );
 
 //Route::prefix('/answer')->group(function () {
