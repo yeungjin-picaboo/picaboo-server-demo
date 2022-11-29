@@ -195,9 +195,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        \App\Providers\BoardServiceProvider::class,
+        \App\Providers\CommunityServiceProvider::class,
         \App\Providers\QuestionServiceProvider::class,
         \App\Providers\AnswerServiceProvider::class,
+        \App\Providers\CommentProvider::class,
     ],
 
     /*
