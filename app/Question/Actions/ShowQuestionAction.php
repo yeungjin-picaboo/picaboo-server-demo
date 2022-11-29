@@ -9,9 +9,6 @@ use App\Question\Domain\Repositories\SearchQuestionToTitleRepositoryInterface;
 use App\Question\Domain\Repositories\ShowAllQuestionRepositoryInterface;
 use App\Question\Domain\Repositories\ShowPaginateQuestionRepositoryInterface;
 use Illuminate\Http\Request;
-use Mockery\Undefined;
-
-//use Illuminate\Support\Facades\Request;
 
 
 class ShowQuestionAction extends Controller
@@ -47,17 +44,14 @@ class ShowQuestionAction extends Controller
         \Log::info($search);
 
         if (isset($page)) {
-            // 페이지네이션 할 때 리턴해주는 값(1페이지당 12개)
-            $paginate = $this->showPagination->showPage($page);
-            return $paginate;
-        } else if (isset($search)) {
-            // 검색했을 때 리턴해주는 값( 페이지 구분 x )
-            $searchTitle = $this->searchToTitle->search($search);
-            return $searchTitle;
+            // 페이지네이션 할 때 리턴해주는 값(1페이지당 12개) page => 페이지네이션 할 때 필요한 파라미터
+            return $this->showPagination->showPage($page);
+        } elseif (isset($search)) {
+            // 검색했을 때 리턴해주는 값( 페이지 구분 x ) search => 검색 할 때 필요한 파라미터
+            return $this->searchToTitle->search($search);
         } else {
             // 전체 게시글 데이터
-            $show = $this->showQuestion->show();
-            return $show;
+            return $this->showQuestion->show();
         }
 
     }
