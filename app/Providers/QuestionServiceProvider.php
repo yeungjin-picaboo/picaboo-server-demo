@@ -17,6 +17,10 @@ use App\Question\Domain\Repositories\SearchQuestionRepositoryInterface;
 use App\Question\Domain\Repositories\SearchQuestionToTitleRepositoryInterface;
 use App\Question\Domain\Repositories\SearchQuestionUserInterface;
 use App\Question\Domain\Repositories\SearchQuestionUserRepository;
+use App\Question\Domain\Repositories\ShowAllQuestionRepository;
+use App\Question\Domain\Repositories\ShowAllQuestionRepositoryInterface;
+use App\Question\Domain\Repositories\ShowPaginateQuestionRepository;
+use App\Question\Domain\Repositories\ShowPaginateQuestionRepositoryInterface;
 use App\Question\Domain\Repositories\UpdateQuestionRepository;
 
 use App\Question\Domain\Repositories\UpdateQuestionRepositoryInterface;
@@ -38,6 +42,8 @@ class QuestionServiceProvider extends ServiceProvider
         $this->app->bind(UpdateQuestionRepositoryInterface::class,UpdateQuestionRepository::class);
         $this->app->bind(SearchQuestionToTitleRepositoryInterface::class,SearchQuestionToTitleRepository::class);
         $this->app->bind(SearchQuestionUserInterface::class,SearchQuestionUserRepository::class);
+        $this->app->bind(ShowAllQuestionRepositoryInterface::class,ShowAllQuestionRepository::class);
+        $this->app->bind(ShowPaginateQuestionRepositoryInterface::class, ShowPaginateQuestionRepository::class);
     }
 
     /**
