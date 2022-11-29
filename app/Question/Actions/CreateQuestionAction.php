@@ -29,9 +29,6 @@ class CreateQuestionAction extends Controller
 
     public function __invoke(Request $request)
     {
-        Log::info("In CreateQuestionAction");
-        Log::info($request);
-
 
         $valid = validator($request->only('question', 'description'), [
             'question' => 'required|string|max:255',
@@ -43,10 +40,9 @@ class CreateQuestionAction extends Controller
             return $this->validResponder->response($valid);
         }
 
-        Log::info("request success");
         $data = request()->only('question', 'description','writer','isPrivate');
 
-        Log::info($data);
+
         $check = $this->createQuestion->create($data);
 
         return $this->requestResponder->response($check, "create", "question");

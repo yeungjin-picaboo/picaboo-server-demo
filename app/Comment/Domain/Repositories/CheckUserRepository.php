@@ -10,10 +10,8 @@ class CheckUserRepository implements CheckUserRepositoryInterface
 {
     public function check($id): bool
     {
-        \Log::info('num is ' . $id);
 
         $nowUser = Comment::where('communities_num', $id);
-
 
         if ($nowUser->exists()) {
             if (\Auth::user()->user_nickname !== $nowUser->value('writer')) {

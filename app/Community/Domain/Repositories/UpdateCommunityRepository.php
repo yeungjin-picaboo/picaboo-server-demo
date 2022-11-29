@@ -9,7 +9,7 @@ class UpdateCommunityRepository implements UpdateCommunityRepositoryInterface
 {
     public function edited($selling_num, $edited)
     {
-        \Log::info($edited);
+
         if (Community::where('selling_num', $selling_num)->exists()) {
             Community::where('selling_num', $selling_num)
                 ->update(

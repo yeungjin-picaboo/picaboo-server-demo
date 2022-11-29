@@ -19,9 +19,6 @@ use Illuminate\Support\Facades\Route;
 //}); api.php 라서 api 가 자체적으로 붙음
 // rootUrl/api/register
 
-Route::get('/hello', function () {
-    Log::info("hello");
-});
 
 Route::prefix('/user')->group(function () {
     Route::post('/register', [\App\Http\Controllers\API\AuthController::class, 'register'])->name('user.register');

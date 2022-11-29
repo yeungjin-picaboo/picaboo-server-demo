@@ -34,7 +34,6 @@ class DeleteQuestionAction extends Controller
 
     public function __invoke(Request $request, $Question_num)
     {
-//        \Log::info($id); -> url Id를 가져와줌
         $check = $this->checkUser->check($Question_num);
 
         if ($check === false) { // 유효하지 않은 글번호일시

@@ -14,10 +14,10 @@ class CheckQuestionNumRepository implements CheckQuestionNumRepositoryInterface
         $nowUser = Question::where('question_num', $question_num);
 
         if ($nowUser->exists()) {
-            \Log::info('true return');
+
             return true;
         } else {
-            \Log::info('false Return');
+
             return false;
         }
 

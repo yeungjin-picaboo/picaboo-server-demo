@@ -29,7 +29,7 @@ class CreateCommentAction extends Controller
     public function __invoke(Request $request)
     {
         $page = $request->input('page_id');
-        Log::info($request);
+
         $valid = validator($request->only('comment', 'page_id'), [
             'comment' => 'required|string|max:255',
             'page_id' => 'required|integer',

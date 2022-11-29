@@ -34,7 +34,7 @@ class DeleteAnswerAction extends Controller
 
     public function __invoke(Request $request, $answer_num)
     {
-//        \Log::info($id); -> url Id를 가져와줌
+
         $check = $this->checkUser->check($answer_num);
         // 유효한 글번호인지, 그 글을 작성한 사용자는 맞는지 검사
 

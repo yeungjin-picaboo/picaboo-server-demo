@@ -35,7 +35,7 @@ class UpdateAnswerAction extends Controller
 
     public function __invoke(Request $request,$answer_num)
     {
-        \Log::info($request);
+
         $valid = validator($request->only('answer'),[
             'answer' =>'required|string',
         ]);

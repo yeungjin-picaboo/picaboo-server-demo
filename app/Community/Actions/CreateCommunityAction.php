@@ -28,7 +28,7 @@ class CreateCommunityAction extends Controller
 
     public function __invoke(Request $request)
     {
-        Log::info($request);
+
         $valid = validator($request->only('title', 'content'), [
             'title' => 'required|string|max:255',
             'content' => 'required|string',

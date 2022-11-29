@@ -21,7 +21,6 @@ class CreateAnswerRepository implements CreateAnswerRepositoryInterface
             'question_num' => $data['question_num'],
 
         ]);
-        \Log::info('this data is '.$answer);
 
         if ($answer) {
             return true;

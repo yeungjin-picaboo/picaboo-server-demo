@@ -16,7 +16,7 @@ class AuthController extends Controller
     // 회원가입
     public function register(Request $request)
     {
-        Log::info($request);
+
         $valid = validator($request->only('email', 'name', 'password','user_nickname','user_phnum'),[
             'email' => 'required|string|email|max:255|unique:users',
             'name' => 'required|string|max:255',
@@ -88,14 +88,13 @@ class AuthController extends Controller
     // 로그인
     public function login(Request $request)
     {
-        Log::info("123", (array)"$request->email");
-        Log::info("123123");
+
 
         $loginCredential = $request->validate([
             'email' => 'required|string|email|max:255',
             'password' => 'required|string|min:6',
         ]);
-        Log::info('email');
+
 
         if(!Auth::attempt($loginCredential)){
             return response()->json([
@@ -115,7 +114,6 @@ class AuthController extends Controller
 //        //라우트앤드포인트가 auth/token 이라 계속 사용하면 됨
 //
 //        Log::info($data['email']);
-//        Log::info("Sibal ", (array)"$client");
 //            $response = $http->post($getTokenGenerateRoute, [
 //                'form_params'=>[
 //                'grant_type' => 'password',
@@ -155,7 +153,6 @@ class AuthController extends Controller
     //리프레시 토큰을 받아서 액세스 토큰 새로고침
     public function tokenRefresh(Request $request)
     {
-        Log::info((string)$request);
         $userRequest = validator($request->only('refresh_token'),[
                 'refresh_token' => 'required|string',
             ]
@@ -174,7 +171,7 @@ class AuthController extends Controller
         $client = Client::where('password_client', 1)->first();
 
         $getTokenGenerateRoute = route('passport.token');
-        Log::info("data is ",$data);
+
         $data = [
             'grant_type' => 'refresh_token',
             'client_id' => $client->id,
@@ -192,8 +189,8 @@ class AuthController extends Controller
 
         $tokenResponse = $data;
 
-        Log::info($tokenResponse);
-        Log::info(\response()->json());
+
+
         if(isset($tokenResponse['error'])){
             return response()->json([
                 'message' => 'token Error',

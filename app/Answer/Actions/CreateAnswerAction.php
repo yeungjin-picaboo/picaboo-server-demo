@@ -41,8 +41,6 @@ class CreateAnswerAction extends Controller
 
         $QsCheck = $this->checkQuestionNum -> checkQuestionNum($question_num);
 
-//        Log::info("this is QsCheck");
-//        Log::info($QsCheck === false);
 
         if ($valid->fails() || $QsCheck === false) {
             return $this->validResponder->response($valid);
@@ -52,8 +50,6 @@ class CreateAnswerAction extends Controller
 
         $data['question_num'] = $question_num;
 
-        Log::info("createAnswerAction data");
-        Log::info($data);
         $check = $this->createAnswer->create($data);
 
         return $this->requestResponder->response($check, "create", "Question");

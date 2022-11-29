@@ -11,15 +11,12 @@ class CreateQuestionRepository implements CreateQuestionRepositoryInterface
 {
     public function create($data): bool
     {
-        \Log::info($data);
-        \Log::info(Auth::user());
         $question = Question::create([
             'question' => $data['question'],
             'description' => $data['description'],
             'writer' => Auth::user()->user_nickname,
             'isPrivate' => $data['isPrivate'],//Auth::user()->user_nickname
         ]);
-        \Log::info('this data is '.$question);
 
         if ($question) {
             return true;

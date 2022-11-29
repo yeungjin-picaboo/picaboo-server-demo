@@ -41,7 +41,6 @@ class ShowQuestionAction extends Controller
         $page = $request->input('page');
         //쿼리스트링 파라미터에 search가 (search =  검색 할 때 필요한 파라미터 )있는지
         $search = $request->input('search');
-        \Log::info($search);
 
         if (isset($page)) {
             // 페이지네이션 할 때 리턴해주는 값(1페이지당 12개) page => 페이지네이션 할 때 필요한 파라미터

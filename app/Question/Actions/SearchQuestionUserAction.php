@@ -30,22 +30,18 @@ class SearchQuestionUserAction extends Controller
 
     public function __invoke(Request $request)
     {
-        Log::info("In SearchQuestionUserAction");
-        Log::info($request);
-
 
         $valid = validator($request->only('search_user'), [
             'search_user' => 'required|string|max:255',
         ]);
 
-        Log::info('sibal');
+
         if ($valid->fails()) {
             return $this->validResponder->response($valid);
         }
 
         $data = request()->only('search_user');
 
-        Log::info($data);
         $check = $this->searchQuestionUser->search($data);
 
         return $this->requestResponder->response($check, "Search", "questionUser");

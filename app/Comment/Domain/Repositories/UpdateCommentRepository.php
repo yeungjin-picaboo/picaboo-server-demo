@@ -9,7 +9,7 @@ class UpdateCommentRepository implements UpdateCommentRepositoryInterface
 {
     public function edited($comment_num, $edited)
     {
-        \Log::info($edited);
+
         if (Comment::where('comment_num', $comment_num)->exists()) {
             Comment::where('comment_num', $comment_num)
                 ->update(

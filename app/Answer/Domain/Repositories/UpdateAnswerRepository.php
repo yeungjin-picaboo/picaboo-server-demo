@@ -10,7 +10,7 @@ class UpdateAnswerRepository implements UpdateAnswerRepositoryInterface
     public function update($answer_num, $modified_content):bool
     {
         $search_user = Answer::where('answer_num', $answer_num);
-        \Log::info($modified_content);
+
         if ($search_user->exists()) {
             $search_user
                 ->update(

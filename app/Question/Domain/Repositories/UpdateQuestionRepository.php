@@ -9,7 +9,7 @@ class UpdateQuestionRepository implements UpdateQuestionRepositoryInterface
 {
     public function update($question_num, $modified_content):bool
     {
-        \Log::info($modified_content);
+
         if (Question::where('question_num', $question_num)->exists()) {
             Question::where('question_num', $question_num)
                 ->update(

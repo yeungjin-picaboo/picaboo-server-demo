@@ -28,7 +28,7 @@ class ShowCommentAction extends Controller
     public function __invoke(Request $request,$post_id)
     {
         // 전체 개시글 조회
-        \Log::info("whtError?");
+
         $show = $this->showComment->show($post_id);
         return $show;
 

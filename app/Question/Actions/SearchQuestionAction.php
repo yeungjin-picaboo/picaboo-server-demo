@@ -29,9 +29,6 @@ class SearchQuestionAction extends Controller
 
     public function __invoke(Request $request)
     {
-        Log::info("In SearchQuestionAction");
-        Log::info($request);
-
 
         $valid = validator($request->only( 'search_title'), [
             'search_title' => 'required|string|max:255',

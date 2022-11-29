@@ -18,13 +18,11 @@ class SearchQuestionUserRepository implements SearchQuestionUserInterface
                 ,'%'.$search_nickname['search_user'].'%'
             );
 
-        \Log::info(
-        json_encode($nowUser->get(), JSON_UNESCAPED_UNICODE));
         if ($nowUser->exists()) {
-            \Log::info('true return');
+
             return true;
         } else {
-            \Log::info('false Return');
+
             return false;
         }
 

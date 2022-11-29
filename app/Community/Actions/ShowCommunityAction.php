@@ -45,7 +45,7 @@ class ShowCommunityAction extends Controller
         $page = $request->input('page');
         //쿼리스트링 파라미터에 search가 있는지
         $search = $request->input('search');
-        \Log::info($search);
+
         $sortType = $request->input('sortType');
 
         if (isset($page)) {

@@ -38,7 +38,7 @@ class UpdateQuestionAction extends Controller
     public function __invoke(Request $request,$question_num)
     {
         // question_num(질문 글 번호) -> url api/qna/{question_num}
-        \Log::info($request);
+
         //TODO 입력한 값 유효성 검사
         $valid = validator($request->only('question' , 'description'),[
             'question' =>'required|string|max:255',
