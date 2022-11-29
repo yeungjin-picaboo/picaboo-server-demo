@@ -13,18 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sellings', function (Blueprint $table) {
-            $table->id('selling_num');;
+        Schema::create('communities', function (Blueprint $table) {
+            $table->id('communities_num');;
             $table->string('title','100');
-            $table->string('email');
-//                ->constrained('users');
-            $table->string('user_nickname');
+            $table->string('writer');
             $table->string('content','1000');
             $table->integer('views')->nullable();
+            $table->integer('reply_count')->default(0)->nullable();
             $table->timestamps();
 
-            $table->foreign('email')->references('email')->on('users');;
-            $table->foreign('user_nickname')->references('user_nickname')->on('users');;
+            $table->foreign('writer')->references('user_nickname')->on('users');;
         });
     }
 

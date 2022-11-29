@@ -36,34 +36,47 @@ Route::prefix('/user')->group(function () {
 });
 
 
-//Route::prefix('/board')->group(function () {
-//    Route::middleware(['auth:api'])->group(function () {
-//        Route::post('/write', \App\SellingBoard\Actions\CreateSellingBoardAction::class)->name('board.create');
-//        Route::delete('/delete/{selling_num}',\App\SellingBoard\Actions\DeleteSellingBoardAction::class)->name('board.delete');
-//        Route::put('/put/{selling_num}',\App\SellingBoard\Actions\UpdateSellingBoardAction::class)->name('board.put');
-//    }
-//    );
-//});
+Route::prefix('/community')->group(function () {
+    Route::get('/',\App\Community\Actions\ShowCommunityAction::class)->name('board.show'); // 모든 게시물 가져오기 및 QueryString에 따라 처리
+    // 모든 게시물 가져오기 ...
+    Route::get('/{id}',\App\Community\Actions\ViewCommunityPostAction::class);
+
+    Route::middleware(['auth:api'])->group(function () {
+        Route::post('/', \App\Community\Actions\CreateCommunityAction::class)->name('board.create');
+        Route::delete('/{selling_num}',\App\Community\Actions\DeleteCommunityAction::class)->name('board.delete');
+        Route::put('/{selling_num}',\App\Community\Actions\UpdateCommunityAction::class)->name('board.put');
+    }
+    );
+});
 
 Route::prefix('/qna')->group(function () {
-    Route::get('/', \App\Question\Actions\ShowQuestionAction::class);
-    Route::get('/{question_num}', \App\Question\Actions\ShowQuestionAction::class);
-    Route::get('/{question_num}', \App\Question\Actions\ShowQuestionAction::class);
+    Route::get('/', \App\Question\Actions\ShowQuestionAction::class)->name('question.show');
     Route::prefix('/search')->group(function () {
         Route::get('/title', \App\Question\Actions\SearchQuestionAction::class);
         Route::get('/user', \App\Question\Actions\SearchQuestionUserAction::class);
     });
 
     Route::middleware(['auth:api'])->group(function () {
-        Route::post('/create', \App\Question\Actions\CreateQuestionAction::class)->name('question.create');
-        Route::delete('/delete/{question_num}', \App\Question\Actions\DeleteQuestionAction::class)->name('question.delete');
-        Route::put('/put/{question_num}', \App\Question\Actions\UpdateQuestionAction::class);
+        Route::post('/', \App\Question\Actions\CreateQuestionAction::class)->name('question.create');
+        Route::delete('/{question_num}', \App\Question\Actions\DeleteQuestionAction::class)->name('question.delete');
+        Route::put('/{question_num}', \App\Question\Actions\UpdateQuestionAction::class);
 
 
     }
     );
 }
 );
+
+Route::prefix('/comment')->group(function (){
+    Route::get('/{post_id}',\App\Comment\Actions\ShowCommentAction::class); // 모든 댓글 데이터 가져오기
+    Route::middleware(['auth:api'])->group(function (){
+        Route::post('/',\App\Comment\Actions\CreateCommentAction::class); // 댓글 작성
+        Route::put('/{post_id}',\App\Comment\Actions\UpdateCommentAction::class);// 댓글 수정
+        Route::delete('/{post_id}',\App\Comment\Actions\DeleteCommentAction::class);// 댓글삭제
+    });
+
+
+});
 
 //Route::prefix('/answer')->group(function () {
 //    Route::middleware(['auth:api'])->group(function () {
