@@ -11,13 +11,13 @@ class SearchCommunityToTitleRepository implements SearchCommunityToTitleReposito
     public function search($search_content): object // 유저가 작성한 글
     {
         \Log::info($search_content);
-        $nowUser = DB::table('Communities')
+        $searchInfo = DB::table('Communities')
             ->where('title'
                 , 'Like'
                 , '%' . $search_content . '%'
             )->get();
 
-        return $nowUser;
+        return $searchInfo;
 
 
     }

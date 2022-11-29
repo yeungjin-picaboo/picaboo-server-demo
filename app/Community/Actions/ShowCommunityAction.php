@@ -52,9 +52,11 @@ class ShowCommunityAction extends Controller
             $paginate = $this->showPagination->showPage($page);
             return $paginate;
         } else if (isset($search)) {
+            // 검색정보
             $searchTitle = $this->searchToTitle->search($search);
             return $searchTitle;
         } else if (isset($sortType)){
+            // 정렬정보
             $sortData = $this->sortCommunity->sort($sortType);
             return $sortData;
         } else {

@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Log;
 class ViewCommunityPostAction extends Controller
 {
     protected $viewpost;
-
     protected $requestResponder;
     protected $validResponder;
 

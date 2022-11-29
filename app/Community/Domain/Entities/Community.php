@@ -26,6 +26,7 @@ class Community extends Model
         'content',
         'writer',
         'views',
+        'reply_count'
     ];
 
     protected $guarded = [
