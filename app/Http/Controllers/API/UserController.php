@@ -16,7 +16,8 @@ class UserController extends Controller
     public function currentUserInfo()
     {
         return response()->json([
-            'user' => Auth::user()
+            'user_nickname' => Auth::user()->user_nickname,
+            'permission' => Auth::user()->permission
         ], Response::HTTP_OK);
     }
 }

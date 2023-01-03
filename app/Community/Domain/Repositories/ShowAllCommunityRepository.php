@@ -12,7 +12,7 @@ class ShowAllCommunityRepository implements ShowAllCommunityRepositoryInterface
 {
     public function show(): object
     {
-        $Community = DB::table('Communities')->get();
+        $Community = DB::table('Communities')->orderByDesc('communities_num')->get();
         return $Community;
     }
 }

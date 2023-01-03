@@ -8,8 +8,11 @@ class CheckUserQuestionRepository implements CheckUserQuestionRepositoryInterfac
     {
         $nowUser = Question::where('question_num',$question_num);
 
+        \Log::info(\Auth::user());
+        \Log::info($nowUser->value('writer'));
+
         if($nowUser->exists()){
-            if(\Auth::user()->email !== $nowUser->value('email')){
+            if(\Auth::user()->user_nickname !== $nowUser->value('writer')){
                 return false;
             }
         };

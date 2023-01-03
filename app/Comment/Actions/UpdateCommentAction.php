@@ -36,7 +36,7 @@ class UpdateCommentAction extends Controller
     public function __invoke(Request $request,$id)
     {
 
-
+        \Log::info($request);
         $valid = validator($request->only('comment'),[
             'comment' =>'required|string|max:255',
         ]);
@@ -44,6 +44,8 @@ class UpdateCommentAction extends Controller
         if($valid->fails()){
             return $this->validResponder->response($valid);
         }
+
+
         \info("Err");
         $check = $this->checkUser->check($id); //TODO 유저의 유효성을 검사하는 코드
 

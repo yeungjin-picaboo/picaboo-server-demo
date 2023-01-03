@@ -24,6 +24,7 @@ class Question extends Model
         'writer',
         'question',
         'description',
+        'isPrivate'
     ];
 
     protected $guarded = [

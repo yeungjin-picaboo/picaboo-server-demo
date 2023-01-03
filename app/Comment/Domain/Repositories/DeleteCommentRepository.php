@@ -3,16 +3,15 @@
 namespace App\Comment\Domain\Repositories;
 
 use App\Comment\Domain\Entities\Comment;
+use App\Common\Responders\DeleteRepositoryInterface;
 use Illuminate\Support\Facades\DB;
 
-class DeleteCommentRepository implements DeleteCommentRepositoryInterface
+class DeleteCommentRepository implements DeleteRepositoryInterface
 {
 
     public function delete($id): bool
     {
 
-
-        //
         if (Comment::where('comment_num', $id)->exists()) {
             $deleteSell = Comment::find($id);
 

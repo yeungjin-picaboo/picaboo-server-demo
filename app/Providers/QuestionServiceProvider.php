@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Answer\Domain\Repositories\CheckUserAnswerRepositortyInterface;
 
 
+use App\Common\Responders\DeleteRepositoryInterface;
 use App\Question\Domain\Repositories\CheckUserQuestionRepository;
 use App\Question\Domain\Repositories\CheckUserQuestionRepositoryInterface;
 use App\Question\Domain\Repositories\CreateQuestionRepository;
@@ -38,7 +39,7 @@ class QuestionServiceProvider extends ServiceProvider
         //
         $this->app->bind(CheckUserQuestionRepositoryInterface::class,CheckUserQuestionRepository::class);
         $this->app->bind(CreateQuestionRepositoryInterface::class,CreateQuestionRepository::class);
-        $this->app->bind(DeleteQuestionRepositoryInterface::class,DeleteQuestionRepository::class);
+        $this->app->bind(DeleteRepositoryInterface::class,DeleteQuestionRepository::class);
         $this->app->bind(UpdateQuestionRepositoryInterface::class,UpdateQuestionRepository::class);
         $this->app->bind(SearchQuestionToTitleRepositoryInterface::class,SearchQuestionToTitleRepository::class);
         $this->app->bind(SearchQuestionUserInterface::class,SearchQuestionUserRepository::class);

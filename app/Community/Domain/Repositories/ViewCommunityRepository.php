@@ -13,7 +13,7 @@ class ViewCommunityRepository implements ViewCommunityRepositoryInterface
 
         DB::table('communities')
             ->where('communities_num', $id)
-            ->increment('reply_count');
+            ->increment('views');
 
         $post = Community::where('communities_num', "$id")
             ->get();

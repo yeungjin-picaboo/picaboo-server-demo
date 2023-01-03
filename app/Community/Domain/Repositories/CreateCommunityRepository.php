@@ -9,7 +9,7 @@ class CreateCommunityRepository implements CreateCommunityRepositoryInterface
 {
     public function create($data): bool
     {
-
+        \Log::info(Auth::user());
         $board = Community::create([
             'title' => $data['title'],
             'content' => $data['content'],

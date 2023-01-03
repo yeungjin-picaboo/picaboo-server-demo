@@ -3,6 +3,7 @@
 namespace App\Comment\Actions;
 
 use App\Common\Responders\CheckUserResponder;
+use App\Common\Responders\DeleteRepositoryInterface;
 use App\Common\Responders\RequestResponder;
 use App\Http\Controllers\Controller;
 use App\Comment\Domain\Repositories\CheckUserRepositoryInterface;
@@ -18,7 +19,7 @@ class DeleteCommentAction extends Controller{
     protected $checkUserResponder;
 
     public function __construct(
-        DeleteCommentRepositoryInterface $deleteComment,
+        DeleteRepositoryInterface $deleteComment,
         CheckUserRepositoryInterface     $checkUser,
         RequestResponder                 $requestResponder,
         CheckUserResponder               $checkUserResponder

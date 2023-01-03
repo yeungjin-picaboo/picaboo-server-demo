@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 use Laravel\Passport\Client;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -30,10 +28,10 @@ class AuthController extends Controller
                 'error' => $valid->errors()->all()
             ], Response::HTTP_BAD_REQUEST);
         }
-
+        \Log::info(222);
         //data 생성
         $data = request()->only('email', 'name', 'password','user_nickname','user_phnum');
-
+        \Log::info(333);
         //사용자 생성
         $user = User::create([
             'name' => $data['name'],
@@ -44,29 +42,7 @@ class AuthController extends Controller
         ]);
         //passport_client 값이 1인것 가져오기
         $client = Client::where('password_client', 1)->first();
-
-        $http = new \GuzzleHttp\Client();
-
-        $getTokenGenerateRoute = route('passport.token');
-//        dd($getTokenGenerateRoute);
-
-//        $response = $http->post($getTokenGenerateRoute, [
-//            'form_params' => [
-//                'grant_type' => 'password',
-//                'client_id' => $client->id,
-//                'client_secret' => $client->secret,
-//                'username' => $data['email'],
-//                'password' => $data['password'],
-//                'scope' => '',
-//            ]
-//        ]);
-//
-//        $tokenResponse = json_decode((string) $response->getBody(), true);
-//        //생성된 사용자랑 토근값을 넣어주고, 201로 create
-//        return response()->json([
-//            'user' => $user,
-//            'token' => $tokenResponse
-//        ], Response::HTTP_CREATED);
+        \Log::info(444);
         $data = [
             'grant_type' => 'password',
             'client_id' => $client['id'],
@@ -76,13 +52,12 @@ class AuthController extends Controller
             'scope' => '*',
         ];
         $request = Request::create('/oauth/token', 'POST', $data);
+        \Log::info(555);
+        \Log::info($request);
         $response = app()->handle($request);
+
         return $response;
-//        $response = app()->handle($request);
-//        return response()-> json([
-//            'user' => $user,
-//            'token' => $response
-//        ], Response::HTTP_CREATED);
+
     }
 
     // 로그인
@@ -153,6 +128,7 @@ class AuthController extends Controller
     //리프레시 토큰을 받아서 액세스 토큰 새로고침
     public function tokenRefresh(Request $request)
     {
+
         $userRequest = validator($request->only('refresh_token'),[
                 'refresh_token' => 'required|string',
             ]
@@ -179,13 +155,7 @@ class AuthController extends Controller
             'refresh_token' => $data['refresh_token'],
             'scope' => '',
         ];
-//        $response = Http::asForm()->post($getTokenGenerateRoute, [
-//            'grant_type' => 'refresh_token',
-//            'client_id' => $client->id,
-//            'client_secret' => $client->secret,
-//            'refresh_token' => $data['refresh_token'],
-//            'scope' => '',
-//        ]);
+
 
         $tokenResponse = $data;
 

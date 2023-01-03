@@ -39,9 +39,9 @@ Route::prefix('/community')->group(function () {
     Route::get('/{id}',\App\Community\Actions\ViewCommunityPostAction::class);
 
     Route::middleware(['auth:api'])->group(function () {
-        Route::post('/', \App\Community\Actions\CreateCommunityAction::class)->name('board.create');
-        Route::delete('/{selling_num}',\App\Community\Actions\DeleteCommunityAction::class)->name('board.delete');
-        Route::put('/{selling_num}',\App\Community\Actions\UpdateCommunityAction::class)->name('board.put');
+    Route::post('/', \App\Community\Actions\CreateCommunityAction::class)->name('board.create');
+    Route::delete('/{selling_num}',\App\Community\Actions\DeleteCommunityAction::class)->name('board.delete');
+    Route::put('/{selling_num}',\App\Community\Actions\UpdateCommunityAction::class)->name('board.put');
     }
     );
 });
@@ -55,17 +55,16 @@ Route::prefix('/qna')->group(function () {
 
     Route::middleware(['auth:api'])->group(function () {
         Route::post('/', \App\Question\Actions\CreateQuestionAction::class)->name('question.create');
-        Route::delete('/{question_num}', \App\Question\Actions\DeleteQuestionAction::class)->name('question.delete');
         Route::put('/{question_num}', \App\Question\Actions\UpdateQuestionAction::class);
-
-
+        Route::delete('/{question_num}', \App\Question\Actions\DeleteQuestionAction::class)->name('question.delete');
     }
     );
 }
 );
 
 Route::prefix('/comment')->group(function (){
-    Route::get('/{post_id}',\App\Comment\Actions\ShowCommentAction::class); // 모든 댓글 데이터 가져오기
+    Route::get('/',\App\Comment\Actions\ShowCommentAction::class); // 모든 댓글 데이터 가져오기
+
     Route::middleware(['auth:api'])->group(function (){
         Route::post('/',\App\Comment\Actions\CreateCommentAction::class); // 댓글 작성
         Route::put('/{post_id}',\App\Comment\Actions\UpdateCommentAction::class);// 댓글 수정

@@ -16,6 +16,7 @@ class ShowPaginateCommunityRepository implements ShowPaginateCommunityRepository
         $Community = DB::table('communities')
             ->skip(12 * ($page - 1))
             ->take(12)
+            ->orderByDesc('communities_num')
             ->get()
         ;
         return $Community;

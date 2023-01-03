@@ -4,6 +4,7 @@
 namespace App\Question\Actions;
 
 use App\Common\Responders\CheckUserResponder;
+use App\Common\Responders\DeleteRepositoryInterface;
 use App\Common\Responders\RequestResponder;
 use App\Http\Controllers\Controller;
 use App\Question\Domain\Repositories\CheckUserQuestionRepositoryInterface;
@@ -20,7 +21,7 @@ class DeleteQuestionAction extends Controller
     protected $checkUserResponder;
 
     public function __construct(
-        DeleteQuestionRepositoryInterface     $deleteQuestion,
+        DeleteRepositoryInterface     $deleteQuestion,
         CheckUserQuestionRepositoryInterface $checkUser,
         RequestResponder                      $requestResponder,
         CheckUserResponder                    $checkUserResponder
@@ -34,6 +35,7 @@ class DeleteQuestionAction extends Controller
 
     public function __invoke(Request $request, $Question_num)
     {
+
         $check = $this->checkUser->check($Question_num);
 
         if ($check === false) { // 유효하지 않은 글번호일시
@@ -42,7 +44,7 @@ class DeleteQuestionAction extends Controller
 
         $delete = $this->deleteQuestion->delete($Question_num);
         // 삭제하기
-
+        \Log::info('sex');
         return $this->requestResponder->response($delete, "delete", "board");
     }
 }

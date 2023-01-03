@@ -12,6 +12,7 @@ use App\Comment\Domain\Repositories\ShowAllCommentRepository;
 use App\Comment\Domain\Repositories\ShowAllCommentRepositoryInterface;
 use App\Comment\Domain\Repositories\UpdateCommentRepository;
 use App\Comment\Domain\Repositories\UpdateCommentRepositoryInterface;
+use App\Common\Responders\DeleteRepositoryInterface;
 use App\Community\Domain\Repositories\UpdateCommunityRepository;
 use App\Community\Domain\Repositories\UpdateCommunityRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
@@ -26,7 +27,7 @@ class CommentProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(CreateCommentRepositoryInterface::class,CreateCommentRepository::class);
-        $this->app->bind(DeleteCommentRepositoryInterface::class,DeleteCommentRepository::class);
+        $this->app->bind(DeleteRepositoryInterface::class,DeleteCommentRepository::class);
         $this->app->bind(ShowAllCommentRepositoryInterface::class,ShowAllCommentRepository::class);
         $this->app->bind(UpdateCommunityRepositoryInterface::class,UpdateCommunityRepository::class);
         $this->app->bind(CheckUserRepositoryInterface::class,CheckUserRepository::class);

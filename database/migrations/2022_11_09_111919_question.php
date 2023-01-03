@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('writer');
             $table->string('question','100');
             $table->string('description','1000');
+            $table->boolean('isPrivate');
             $table->timestamps();
-//            $table->foreign('email')->references('email')->on('users');
             $table->foreign('writer')->references('user_nickname')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }

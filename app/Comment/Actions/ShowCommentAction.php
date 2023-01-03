@@ -25,10 +25,11 @@ class ShowCommentAction extends Controller
         $this->requestResponder = $requestResponder; // CommonResponder
     }
 
-    public function __invoke(Request $request,$post_id)
+    public function __invoke(Request $request)
     {
-        // 전체 개시글 조회
-
+        // 전체 댓글 조회
+        \Log::info("조회하기");
+        $post_id = $request->input('post_id');
         $show = $this->showComment->show($post_id);
         return $show;
 

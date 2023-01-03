@@ -29,7 +29,7 @@ class CreateQuestionAction extends Controller
 
     public function __invoke(Request $request)
     {
-
+        Log::info($request);
         $valid = validator($request->only('question', 'description'), [
             'question' => 'required|string|max:255',
             'description' => 'required|string',

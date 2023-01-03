@@ -31,12 +31,13 @@ class DeleteCommunityAction extends Controller{
     }
     public function __invoke(Request $request,$id)
     {
+        \Log::info($id);
         $check = $this->checkUser->check($id);
 
         if($check===false){
             return $this -> checkUserResponder->response();
         }
-
+        \Log::info('6666');
         $delete = $this->deleteBoard->delete($id);
 
         return $this->requestResponder->response($delete,"delete" , "board");

@@ -28,19 +28,19 @@ class CreateCommentAction extends Controller
 
     public function __invoke(Request $request)
     {
-        $page = $request->input('page_id');
-
-        $valid = validator($request->only('comment', 'page_id'), [
+        $page = $request->input('post_id');
+        Log::info($page);
+        Log::info($request);
+        $valid = validator($request->only('comment','post_id'), [
             'comment' => 'required|string|max:255',
-            'page_id' => 'required|integer',
+            'post_id' => 'required|integer'
         ]);
-
 
         if ($valid->fails()) {
             return $this->validResponder->response($valid);
         }
 
-        $data = request()->only('page_id', 'comment');
+        $data = request()->only('comment',"post_id");
 
         $check = $this->createComment->create($data);
 
